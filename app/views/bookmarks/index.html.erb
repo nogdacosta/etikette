@@ -1,8 +1,27 @@
+<% content_for :page_class, 'bg-light' %>
 <p id="notice"><%= notice %></p>
 
 <h1>Bookmarks</h1>
 
-<table>
+<div class="bookmarks-wrapper">
+  <ul class="bookmarks-list list-inline row flex-items-xs-center">
+    <% @bookmarks.each do |bookmark| %>
+      <li class="col-sm-3">
+        <div class="card" data-url="<%= bookmark.url %>">
+          <img class="card-img-top" src="http://placeharold.com/451/270" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title"><%= bookmark.title %></h4>
+            <p class="card-text"><%= bookmark.tags %></p>
+            <%= link_to 'Show', bookmark, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<!-- <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -26,7 +45,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <br>
 <% if user_signed_in? %>
