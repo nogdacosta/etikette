@@ -18,6 +18,10 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # bootstrap for rails
 gem 'bootstrap', '~> 4.0.0.alpha3'
+# bootstrap uses tether for absolute positioning
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
