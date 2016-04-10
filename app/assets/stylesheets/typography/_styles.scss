@@ -1,0 +1,45 @@
+.text-{
+	&blue{
+		color: $blue-500;
+	}
+	&dark-blue{
+		color: $blue-900;
+	}
+	&yellow{
+		color: $yellow-500;
+	}
+	&white{
+		color: #fff;
+	}
+	&black{
+		color: #000;
+	}
+	&red{
+		color: $red-500;
+	}
+	&green{
+		color: $green-500;
+	}
+	&dark{
+		color: $grey-900;
+	}
+  &regular{
+    color: $grey-700;
+  }
+	&light{
+		color: $grey-500;
+	}
+}
+
+hr{
+	border-color: $grey-300;
+}
+
+// del{
+// 	background-color: lighten($red-500, 25%);
+// 	color: $red-500;
+// }
+// ins{
+// 	background-color: $green-500;
+// 	color: darken($green-500, 25%);
+// }

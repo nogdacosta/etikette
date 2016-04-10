@@ -1,0 +1,111 @@
+/* Reset and overrides */
+
+html,
+body {
+  font-size: $em-base;
+  -webkit-tap-highlight-color: transparent;
+  font-family: $font-family;
+  font-weight: $font-weight-base;
+  direction: ltr;
+  color: $grey-900;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+}
+
+html,
+html a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+a {
+  color: $blue-500;
+  outline: 0;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $blue-900;
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
+canvas {
+  &:focus {
+    @extend a:focus;
+  }
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+
+/* remove rounds from all elements */
+
+div,
+input,
+select,
+textarea,
+span,
+img,
+table,
+td,
+th,
+p,
+a,
+button,
+ul,
+code,
+pre,
+li {
+  border-radius: 0;
+}
+
+ul,
+li {
+  padding: 0;
+}
+
+ul ul {
+  padding-left: 30px;
+}
+
+img {
+  max-width: 100%;
+}
+
+@-webkit-viewport {
+  width: device-width;
+}
+
+@-moz-viewport {
+  width: device-width;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+@-o-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+@-ms-viewport {
+  width: auto !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}

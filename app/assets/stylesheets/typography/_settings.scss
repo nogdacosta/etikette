@@ -1,0 +1,31 @@
+// TYPOGRAPHY
+// @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,700,300italic,400italic,600italic,700italic);
+// $font-family:  "Source Sans Pro", 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+
+$font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+
+// Font size base
+$em-base: 16px;
+$font-weight-base: 400;
+
+// Headings size
+$font-size-h1: rem(32);
+$font-size-h2: rem(22);
+$font-size-h3: rem(20);
+$font-size-h4: rem(20);
+$font-size-h5: rem(14);
+$font-size-h6: rem(12); // ?????
+
+// Paragraph and others
+$font-size-p: $em-base;
+$font-size-li: rem(16);
+
+$line-height-base: 1.35rem;
+
+
+// Headings Definitions
+$headings-font-family:    inherit !default;
+$headings-font-weight:    900;
+$headings-line-height:    1.1em;
+$headings-color:          $grey-900 !default;
+$headings-small-color:    $grey-700 !default;
