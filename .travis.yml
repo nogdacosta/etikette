@@ -1,7 +1,10 @@
 language: ruby
 rvm:
  - 2.3.0
+sudo: required
 services:
 - postgresql
 before_script:
-  - psql -c "CREATE USER andrecosta;CREATE DATABASE etikette_development;GRANT ALL PRIVILEGES ON DATABASE etikette_development to andrecosta" -U postgres
+  - psql -c 'create database etikette_test;' -U postgres
+addons:
+  postgresql: "9.5.1"
