@@ -1,5 +1,7 @@
 language: ruby
 rvm:
  - 2.3.0
+services:
+- postgresql
 before_script:
-  - psql -c "CREATE USER andrecosta WITH PASSWORD 'andrecosta';" -U postgres
+  - psql -c "CREATE USER andrecosta;CREATE DATABASE etikette_development;GRANT ALL PRIVILEGES ON DATABASE etikette_development to andrecosta" -U postgres
