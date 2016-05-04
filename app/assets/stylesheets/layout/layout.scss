@@ -1,4 +1,20 @@
-.layout-content{
-  margin: 0 -15px;
-  padding: 75px 15px 30px;
+.container-wrapper{
+  position: relative;
+  .navbar{
+    left: 225px;
+  }
+  .sidebar{
+    position: absolute;
+    width: 225px;
+    top: 0; bottom: 0;
+    left: 0;
+    border-left: 1px solid $grey-300;
+  }
+  .content-wrapper{
+    padding-left: 225px;
+    min-height: 100vh;
+  }
+  .layout-content{
+    padding: 75px 15px 30px;
+  }
 }

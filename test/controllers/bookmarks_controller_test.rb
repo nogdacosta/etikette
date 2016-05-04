@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class BookmarksControllerTest < ActionDispatch::IntegrationTest
+  self.use_transactional_fixtures = true
   setup do
     @bookmark = bookmarks(:one)
   end

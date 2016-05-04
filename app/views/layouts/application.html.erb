@@ -16,65 +16,78 @@
   <body class="<%= controller.controller_name %>-<%= controller.action_name %>">
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
-    <div class="container-fluid">
-      <div class="main-container">
-        <nav class="navbar navbar-light bg-white navbar-full navbar-fixed-top">
-          <!-- Sidebar toggle -->
-          <button class="navbar-toggler pull-xs-left hidden-lg-up" type="button" data-toggle="sidebar" data-target="#sidebar-left"><span class="material-icons">menu</span></button>
+    <div class="container-wrapper ">
+      <nav class="navbar navbar-light bg-white navbar-full navbar-fixed-top">
+        <!-- Sidebar toggle -->
+        <button class="navbar-toggler pull-xs-left hidden-lg-up" type="button" data-toggle="sidebar" data-target="#sidebar-left"><span class="material-icons">menu</span></button>
 
-          <!-- Search -->
-          <form class="form-inline pull-xs-left hidden-sm-down">
-            <div class="input-group">
-              <input type="search" class="form-control" placeholder="Search for...">
+        <!-- Search -->
+        <form class="form-inline pull-xs-left hidden-sm-down">
+          <div class="input-group">
+            <input type="search" class="form-control" placeholder="Search for...">
+          </div>
+        </form>
+
+        <ul class="nav navbar-nav pull-xs-right hidden-md-down">
+          <!-- Notifications dropdown -->
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-caret="false" data-toggle="dropdown" role="button" aria-haspopup="false"><i class="material-icons email">mail_outline</i></a>
+            <ul class="dropdown-menu dropdown-menu-right notifications" aria-labelledby="Preview">
+              <li class="dropdown-title">Emails</li>
+              <li class="dropdown-item email-item">
+                <a class="nav-link" href="index.html">
+                  <span class="media">
+          					<span class="media-left media-middle"><i class="material-icons">mail</i></span>
+                      <span class="media-body media-middle">
+          						<small class="pull-xs-right text-muted">12:20</small>
+          						<strong>Adrian Demian</strong>
+          						Enhance your website with
+          					</span>
+                  </span>
+                </a>
+              </li>
+
+
+              <li class="dropdown-action center">
+                <a href="email.html">Go to inbox</a>
+              </li>
+            </ul>
+          </li> -->
+          <!-- // END Notifications dropdown -->
+
+          <!-- User dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
+              <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-list" aria-labelledby="Preview">
+              <%= link_to 'Account', edit_user_registration_path, class: 'dropdown-item' %>
+              <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'dropdown-item' %>
             </div>
-          </form>
+          </li>
+          <!-- // END User dropdown -->
+        </ul>
+      </nav>
 
-          <ul class="nav navbar-nav pull-xs-right hidden-md-down">
-            <!-- Notifications dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-caret="false" data-toggle="dropdown" role="button" aria-haspopup="false"><i class="material-icons email">mail_outline</i></a>
-              <ul class="dropdown-menu dropdown-menu-right notifications" aria-labelledby="Preview">
-                <li class="dropdown-title">Emails</li>
-                <li class="dropdown-item email-item">
-                  <a class="nav-link" href="index.html">
-                    <span class="media">
-            					<span class="media-left media-middle"><i class="material-icons">mail</i></span>
-                        <span class="media-body media-middle">
-            						<small class="pull-xs-right text-muted">12:20</small>
-            						<strong>Adrian Demian</strong>
-            						Enhance your website with
-            					</span>
-                    </span>
-                  </a>
-                </li>
-
-
-                <li class="dropdown-action center">
-                  <a href="email.html">Go to inbox</a>
-                </li>
-              </ul>
-            </li>
-            <!-- // END Notifications dropdown -->
-
-            <!-- User dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
-                <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">
-              </a>
-              <div class="dropdown-menu dropdown-menu-right dropdown-menu-list" aria-labelledby="Preview">
-                <%= link_to 'Account', edit_user_registration_path, class: 'dropdown-item' %>
-                <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'dropdown-item' %>
-              </div>
-            </li>
-            <!-- // END User dropdown -->
-          </ul>
-        </nav>
-
-        <div class="sidebar" id="sidebar-left">
-
+      <div class="sidebar bg-blue" id="sidebar-left">
+        <div class="sidebar-wrapper">
+          <div class="user-info">
+            <div class="user-image">
+              <%= image_tag current_user.avatar.thumb.url, class: "img-responsive img-circle" %>
+            </div>
+            <div class="user-name">
+              <%= current_user.user_name || current_user.email %>
+            </div>
+          </div>
+          <div class="categories-wrapper">
+            <ul>
+              <li>Category 1</li>
+            </ul>
+          </div>
         </div>
-        <div class="layout-content <%= yield (:page_class) %>">
-
+      </div>
+      <div class="content-wrapper etikkete-wrapper <%= yield (:page_class) %>">
+        <div class="layout-content">
           <%= yield %>
         </div>
       </div>
