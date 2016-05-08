@@ -1,24 +1,83 @@
-## README
+# Etikette
+[![Build Status](https://travis-ci.org/nogdacosta/etikette.svg?branch=master)](https://travis-ci.org/nogdacosta/etikette) [![Dependency Status](https://gemnasium.com/badges/github.com/nogdacosta/etikette.svg)](https://gemnasium.com/github.com/nogdacosta/etikette) [![Code Climate](https://codeclimate.com/github/nogdacosta/etikette/badges/gpa.svg)](https://codeclimate.com/github/nogdacosta/etikette)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A project born from the need of
 
-Things you may want to cover:
 
-* Ruby version
+## Installation
 
-* System dependencies
+### Dependencies
+To run Etikette we need the following prerequisites:
 
-* Configuration
+* [Homebrew](http://brew.sh/) (for downloading software packages)
 
-* Database creation
+```
+$ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+```
 
-* Database initialization
+* [Git](http://git-scm.com/) (version control)
 
-* How to run the test suite
+```
+$ brew install git
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* RVM, ruby 2.3.0
 
-* Deployment instructions
+```
+$ \curl -L https://get.rvm.io | bash -s stable --ruby=2.3.0
+$ rvm use 2.3.0 --default
+```
 
-* ...
+We also require rails 5 gem `rails ( >= 5.0.0.beta3, < 5.1 )`
+
+* [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup) (database)
+
+* [ImageMagick](http://www.imagemagick.org/script/index.php) (image processing software)
+
+```
+$ brew install imagemagick
+```
+
+### Local Setup
+
+Clone Etikette :bookmark:
+
+```bash
+$ git clone git://github.com/nogdacosta/etikette.git
+$ cd etikette
+```
+Run
+```bash
+$ bundle install
+```
+
+Create / migrate database
+```bash
+$ rake db:create
+$ rake db:migrate
+```
+
+Run the Rails server
+```bash
+$ rails s
+```
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## History
+
+To learn a bit more why I've started this project you can read [this post](https://medium.com/@nogdacosta/a063d4cd04a8) on Medium
+
+## Credits
+
+TODO: Write credits
+
+## License
+
+Copyright &copy; 2016 @nogdacosta - Released under the MIT license.
