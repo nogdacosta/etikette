@@ -1,8 +1,10 @@
 # Etikette
 [![Build Status](https://travis-ci.org/nogdacosta/etikette.svg?branch=master)](https://travis-ci.org/nogdacosta/etikette) [![Dependency Status](https://gemnasium.com/badges/github.com/nogdacosta/etikette.svg)](https://gemnasium.com/github.com/nogdacosta/etikette) [![Code Climate](https://codeclimate.com/github/nogdacosta/etikette/badges/gpa.svg)](https://codeclimate.com/github/nogdacosta/etikette)
 
-A project born from the need of
-
+A Bookmark manager in development phase.<br>
+This project was born from the need to learn Ruby on Rails by a frontend developer.<br>
+<br>
+To learn a bit more why I've started this project you can read [this post](https://medium.com/@nogdacosta/a063d4cd04a8) on Medium
 
 ## Installation
 
@@ -69,11 +71,6 @@ $ rails s
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## History
-
-To learn a bit more why I've started this project you can read [this post](https://medium.com/@nogdacosta/a063d4cd04a8) on Medium
-
 
 ## License
 
