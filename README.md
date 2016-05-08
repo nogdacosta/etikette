@@ -74,9 +74,6 @@ $ rails s
 
 To learn a bit more why I've started this project you can read [this post](https://medium.com/@nogdacosta/a063d4cd04a8) on Medium
 
-## Credits
-
-TODO: Write credits
 
 ## License
 
