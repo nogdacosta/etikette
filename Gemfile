@@ -35,10 +35,10 @@ gem 'jbuilder', '~> 2.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Devise for Authentication
-gem 'devise', '4.0.0.rc2'
+gem 'devise', '~> 4.1'
 
 # simple and extremely flexible way to upload files
-gem 'carrierwave', '~> 0.11.0'
+gem 'carrierwave', '~> 0.11'
 gem 'mini_magick', '~> 4.5'
 
 # Use Capistrano for deployment
@@ -52,13 +52,28 @@ group :development, :test do
   gem 'rubocop', require: false
 end
 
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 3.0'
-  gem 'listen', '~> 3.0.5'
+  gem 'web-console'
+  gem 'listen'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
+
+  gem 'rspec', '~> 3.5.0.beta1'
+  gem 'rspec-core', '~> 3.5.0.beta1'
+  gem 'rspec-rails', '~> 3.5.0.beta1'
+  gem 'guard-rspec', '~> 4.7', require: false
+
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'spring-commands-rspec'
+  gem 'vcr'
+end
+
+group :test do
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
