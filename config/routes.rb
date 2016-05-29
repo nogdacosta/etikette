@@ -4,6 +4,7 @@ Rails.application.routes.draw do
                       controllers: { registrations: 'registrations' }
 
   resources :bookmarks
+  resources :collections
 
   # After authenticated, send user to this page
   authenticated :user do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
   # While I can't figure out how to force the user to be logged in
   root 'bookmarks#index'
+
 
 
 

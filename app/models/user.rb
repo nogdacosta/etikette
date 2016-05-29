@@ -7,11 +7,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # validates_presence_of   :avatar
-  # validates_integrity_of  :avatar
-  # validates_processing_of :avatar
-  #
-  # validate :avatar_size_validation
+  validates_presence_of   :avatar, on: :update
+  validates_integrity_of  :avatar, on: :update
+  validates_processing_of :avatar, on: :update
+
+  validate :avatar_size_validation, on: :update
+
+  has_and_belongs_to_many :collection
 
   private
   def avatar_size_validation
