@@ -8,12 +8,13 @@ class CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
-    @collections = Collection.all
+    @collections = Collection.where(user: current_user)
   end
 
   # GET /collections/1
   # GET /collections/1.json
   def show
+    @items = @collection.bookmark
   end
 
   # GET /collections/new
@@ -75,7 +76,7 @@ class CollectionsController < ApplicationController
 
     def authorized_user
       @collection = current_user.collections.find_by(id: params[:id])
-      redirect_to collections_path, notice: "Not authorized to edit this collections" if @collection.nil?
+      redirect_to collections_path, notice: "Not authorized to edit this collection" if @collection.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

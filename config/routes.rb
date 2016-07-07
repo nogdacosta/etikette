@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # After authenticated, send user to this page
   authenticated :user do
-    root 'bookmarks#index', as: :authenticated_root
+    root 'collections#index', as: :authenticated_root
   end
 
   # unauthenticated :user do
@@ -16,9 +16,11 @@ Rails.application.routes.draw do
   # end
 
   # While I can't figure out how to force the user to be logged in
-  root 'bookmarks#index'
+  root 'collections#index'
 
 
+  # Inside Each collection we have a list of collections/bookmarks
+  get 'collections/:collection_id', to: 'bookmark#index', as: :collection_items
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -16,19 +16,18 @@
   <body class="<%= controller.controller_name %>-<%= controller.action_name %>">
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
-    <div class="container-wrapper ">
-      <nav class="navbar navbar-light bg-white navbar-full navbar-fixed-top">
-        <!-- Sidebar toggle -->
-        <button class="navbar-toggler pull-xs-left hidden-lg-up" type="button" data-toggle="sidebar" data-target="#sidebar-left"><span class="material-icons">menu</span></button>
+
+    <header class="etikette-header">
+      <nav>
 
         <!-- Search -->
-        <form class="form-inline pull-xs-left hidden-sm-down">
+        <form class="form-inline hidden-sm-down">
           <div class="input-group">
             <input type="search" class="form-control" placeholder="Search for...">
           </div>
         </form>
 
-        <ul class="nav navbar-nav pull-xs-right hidden-md-down">
+        <ul class="nav navbar-nav hidden-md-down">
           <!-- Notifications dropdown -->
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-caret="false" data-toggle="dropdown" role="button" aria-haspopup="false"><i class="material-icons email">mail_outline</i></a>
@@ -56,9 +55,12 @@
           <!-- // END Notifications dropdown -->
 
           <!-- User dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown user-info">
             <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
-              <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">
+              <span class="user-image">
+                <%= image_tag current_user.avatar.thumb.url, class: "img-responsive img-circle" %>
+              </span>
+              <span class="user-name"><%= current_user.user_name || current_user.email %></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-list" aria-labelledby="Preview">
               <%= link_to 'Account', edit_user_registration_path, class: 'dropdown-item' %>
@@ -68,28 +70,12 @@
           <!-- // END User dropdown -->
         </ul>
       </nav>
+    </header>
 
-      <div class="sidebar bg-blue" id="sidebar-left">
-        <div class="sidebar-wrapper">
-          <div class="user-info">
-            <div class="user-image">
-              <%= image_tag current_user.avatar.thumb.url, class: "img-responsive img-circle" %>
-            </div>
-            <div class="user-name">
-              <%= current_user.user_name || current_user.email %>
-            </div>
-          </div>
-          <div class="categories-wrapper">
-            <ul>
-              <li>Category 1</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="content-wrapper etikkete-wrapper <%= yield (:page_class) %>">
-        <div class="layout-content">
-          <%= yield %>
-        </div>
+    <div class="container-wrapper etikkete-wrapper <%= yield (:page_class) %>">
+
+      <div class="layout-content">
+        <%= yield %>
       </div>
 
     </div>

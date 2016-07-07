@@ -1,4 +1,5 @@
 class Collection < ApplicationRecord
-  has_many :users
-  has_many :bookmarks
+  belongs_to :user
+  has_many :collection
+  has_many :bookmark
 end

@@ -1,20 +1,34 @@
+header.etikette-header{
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid $grey-300;
+  padding: 0 35px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+
+  nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  .user-image{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+  }
+
+}
+
 .container-wrapper{
   position: relative;
-  .navbar{
-    left: 225px;
-  }
-  .sidebar{
-    position: absolute;
-    width: 225px;
-    top: 0; bottom: 0;
-    left: 0;
-    border-left: 1px solid $grey-300;
-  }
-  .content-wrapper{
-    padding-left: 225px;
-    min-height: 100vh;
-  }
+  min-height: 100vh;
+  padding-top: 71px;
   .layout-content{
-    padding: 75px 15px 30px;
+    padding: 50px 80px;
   }
 }

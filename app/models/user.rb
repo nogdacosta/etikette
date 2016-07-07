@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   validate :avatar_size_validation, on: :update
 
-  has_and_belongs_to_many :collection
+  has_many :collection
 
   private
   def avatar_size_validation
