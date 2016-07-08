@@ -21,6 +21,10 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
   end
 
+  def add
+    @bookmark = Bookmark.new
+  end
+
   # GET /bookmarks/1/edit
   def edit
   end

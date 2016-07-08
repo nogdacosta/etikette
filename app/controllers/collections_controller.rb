@@ -14,7 +14,7 @@ class CollectionsController < ApplicationController
   # GET /collections/1
   # GET /collections/1.json
   def show
-    @items = @collection.bookmark
+    @items = @collection.bookmarks
   end
 
   # GET /collections/new
@@ -68,6 +68,20 @@ class CollectionsController < ApplicationController
     end
   end
 
+  def new_bookmark
+    @collection = Collection.find(params[:collection_id])
+    @bookmark = Bookmark.new
+  end
+
+  def save_bookmark
+    @collection = Collection.find(params[:collection_id])
+    bookmark = Bookmark.new(bookmark_params)
+    @collection.bookmarks << bookmark
+    @collection.save
+
+    redirect_to collection_path id: @collection.id
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
@@ -82,5 +96,10 @@ class CollectionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
       params.require(:collection).permit(:name, :description, :tags, :categories)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def bookmark_params
+      params.require(:bookmark).permit(:title, :url, :tags)
     end
 end

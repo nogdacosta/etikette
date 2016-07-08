@@ -45,6 +45,12 @@ GEM
     autoprefixer-rails (6.3.7)
       execjs
     bcrypt (3.1.11)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
@@ -153,6 +159,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
+      pry (~> 0.10)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (3.4.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -273,6 +284,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootstrap (~> 4.0.0.alpha3)
   byebug
   capybara
@@ -286,6 +299,9 @@ DEPENDENCIES
   listen
   mini_magick (~> 4.5)
   pg (~> 0.18)
+  pry
+  pry-byebug
+  pry-rails
   puma
   rails (>= 5.0.0.beta3, < 5.1)
   rails-assets-tether (>= 1.1.0)!
