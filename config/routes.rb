@@ -4,7 +4,7 @@ Rails.application.routes.draw do
                       controllers: { registrations: 'registrations' }
 
   # resources :bookmarks
-  resources :collections
+  # resources :collections
 
   # After authenticated, send user to this page
   authenticated :user do
@@ -20,9 +20,15 @@ Rails.application.routes.draw do
 
 
   # Inside Each collection we have a list of collections/bookmarks
-  get 'collections/:collection_id',                 to: 'collections#index',            as: :collection_items
-  get 'collections/:collection_id/new_bookmark',    to: 'collections#new_bookmark',     as: :new_bookmark
-  post 'collections/:collection_id/save_bookmark',  to: 'collections#save_bookmark',    as: :save_bookmark
+  get 'collections',                                to: 'collections#index',          as: :collections
+  get 'collections/:collection_id',                 to: 'collections#show',           as: :collection
+  get 'collections/:collection_id/new_bookmark',    to: 'collections#new_bookmark',   as: :new_bookmark
+  post 'collections/:collection_id/save_bookmark',  to: 'collections#save_bookmark',  as: :save_bookmark
+
+  get 'collections/:collection_id/new',             to: 'collections#new',            as: :new_collection
+  get 'collections/:collection_id/edit',            to: 'collections#edit',           as: :edit_collection
+  post 'collections/:collection_id/save',           to: 'collections#save',           as: :save_collection
+  patch 'collections/:collection_id/update',        to: 'collections#update',         as: :update_collection
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
