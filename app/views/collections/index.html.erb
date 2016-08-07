@@ -1,11 +1,14 @@
 <% content_for :page_class, 'bg-light' %>
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Add Bookmark', new_bookmark_path(@default) %>
+<%= link_to 'Add Collection', new_collection_path(@default) %>
+
 <h1>Collections</h1>
 
 <div class="bookmarks-wrapper">
   <ul class="bookmarks-list list-inline row">
-    <% @user.collections.each do |collection| %>
+    <% @collections.each do |collection| %>
       <li class="col-sm-3">
         <div class="card" data-url="<%= collection.id %>">
           <div class="card-block">
@@ -23,7 +26,7 @@
 <h2>Bookmarks</h2>
 <div class="bookmarks-wrapper">
   <ul class="bookmarks-list list-inline row">
-    <% @user.bookmarks.each do |bookmark| %>
+    <% @bookmarks.each do |bookmark| %>
       <li class="col-sm-3">
         <div class="card" data-url="<%= bookmark.id %>">
           <div class="card-block">
