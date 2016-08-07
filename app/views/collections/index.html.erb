@@ -4,8 +4,8 @@
 <h1>Collections</h1>
 
 <div class="bookmarks-wrapper">
-  <ul class="bookmarks-list list-inline row flex-items-xs-center">
-    <% @collections.each do |collection| %>
+  <ul class="bookmarks-list list-inline row">
+    <% @user.collections.each do |collection| %>
       <li class="col-sm-3">
         <div class="card" data-url="<%= collection.id %>">
           <div class="card-block">
@@ -20,8 +20,25 @@
   </ul>
 </div>
 
+<h2>Bookmarks</h2>
+<div class="bookmarks-wrapper">
+  <ul class="bookmarks-list list-inline row">
+    <% @user.bookmarks.each do |bookmark| %>
+      <li class="col-sm-3">
+        <div class="card" data-url="<%= bookmark.id %>">
+          <div class="card-block">
+            <h4 class="card-title"><%= bookmark.title %></h4>
+            <p class="card-text"><%= bookmark.url %></p>
+            <p class="card-text"><%= bookmark.tags %></p>
+            <%#= link_to 'Show', bookmark, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <br>
 <% if user_signed_in? %>
-  <%= link_to 'New Collection', new_collection_path %>
+  <%#= link_to 'New Collection', new_collection_path %>
 <% end %>

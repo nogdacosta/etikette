@@ -1,15 +1,5 @@
-<%= form_for(@collection) do |f| %>
-  <% if @collection.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
-
-      <ul>
-      <% @collection.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h1>Edit Collection <%= @collection.name %></h1>
+<%= form_for @collection, url: update_collection_path(collection_id: @collection.id, bookmark: @bookmark) do |f| %>
 
   <div class="field">
     <%= f.label :name %>
@@ -35,3 +25,6 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<%= link_to 'Back', collection_path(@collection) %>
