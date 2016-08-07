@@ -1,15 +1,16 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, except: :index
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   ## if you want spesific action for require authentication
   ## before_filter :authenticate_user!, :only => [:action1, :action2]
 
   # GET /collections
   # GET /collections.json
   def index
-    @user = current_user.collection
-    @collections = @user.collections
+    @default = current_user.collection
+    @collections = @default.collections
+    @bookmarks = @default.bookmarks
   end
 
   # GET /collections/1
