@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502201956) do
+ActiveRecord::Schema.define(version: 20160715124315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +19,22 @@ ActiveRecord::Schema.define(version: 20160502201956) do
     t.string   "title"
     t.string   "url"
     t.string   "tags"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "collection_id"
+    t.index ["collection_id"], name: "index_bookmarks_on_collection_id", using: :btree
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "tags"
+    t.string   "categories"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "parent_type"
+    t.integer  "parent_id"
+    t.index ["parent_type", "parent_id"], name: "index_collections_on_parent_type_and_parent_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

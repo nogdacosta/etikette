@@ -54,6 +54,14 @@ end
 
 
 group :development do
+  # Pry instead of IRB
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  # better errors
+  gem "better_errors"
+  gem "binding_of_caller"
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console'
   gem 'listen'

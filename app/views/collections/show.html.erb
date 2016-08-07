@@ -1,0 +1,63 @@
+<h2><%= @collection.name %></h2>
+<p><%= @collection.description %></p>
+<%= @collection.tags %><br><%= @collection.categories %>
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Back', collections_path %>
+
+<%#= link_to 'Add Bookmark', new_bookmark_path(@collection) %>
+<%= link_to 'Add Bookmark', new_bookmark_path(@collection) %>
+<%= link_to 'Add Collection', new_collection_path %>
+
+<!-- LIST ALL COLLECTIONS -->
+<h4>Collections</h4>
+
+<div class="bookmarks-wrapper">
+  <ul class="bookmarks-list list-inline row">
+    <% @collections.each do |collection| %>
+      <li class="col-sm-3">
+        <div class="card" data-url="<%= collection.id %>">
+          <div class="card-block">
+            <h4 class="card-title"><%= collection.name %></h4>
+            <p class="card-text"><%= collection.tags %></p>
+            <p class="card-text"><%= collection.categories %></p>
+            <%= link_to 'Show', collection, class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- LIST ALL BOOKMARKS -->
+<div class="">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="4">Bookmarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.title %>
+          </td>
+          <td>
+            <%= item.url %>
+          </td>
+          <td>
+            <%= item.tags %>
+          </td>
+          <td>
+            <a href="#">Open</a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

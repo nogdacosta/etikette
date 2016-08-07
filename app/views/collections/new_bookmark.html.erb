@@ -1,0 +1,23 @@
+<h1>New Bookmark</h1>
+
+<%= form_for @bookmark, url: save_bookmark_path(collection_id: @collection.id, bookmark: @bookmark) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tags %>
+    <%= f.text_field :tags %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

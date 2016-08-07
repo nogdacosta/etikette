@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BookmarksController, :type => :controller do
+RSpec.describe BookmarksController, type: :controller do
   describe "anonymous user" do
     before :each do
       # This simulates an anonymous user
