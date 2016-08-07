@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :collection, as: :parent
 
   mount_uploader :avatar, AvatarUploader
 
@@ -12,8 +13,6 @@ class User < ApplicationRecord
   validates_processing_of :avatar, on: :update
 
   validate :avatar_size_validation, on: :update
-
-  has_many :collections
 
   private
   def avatar_size_validation
