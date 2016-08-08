@@ -41,6 +41,8 @@ gem 'devise', '~> 4.1'
 gem 'carrierwave', '~> 0.11'
 gem 'mini_magick', '~> 4.5'
 
+gem 'addressable', '~> 2.4'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
