@@ -32,9 +32,11 @@ class CollectionsController < ApplicationController
     @collection.collections << collection
     @collection.save
 
+    return_to = @collection.is_root? ? collections_path : collection_path
+
     respond_to do |format|
       if @collection.save
-        format.html { redirect_to collection_path, notice: 'Collection was successfully created.' }
+        format.html { redirect_to return_to, notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @collection }
       else
         format.html { render :new }
@@ -51,9 +53,11 @@ class CollectionsController < ApplicationController
   # PATCH/PUT /collections/1
   # PATCH/PUT /collections/1.json
   def update
+    return_to = @collection.is_root? ? collections_path : collection_path
+
     respond_to do |format|
       if @collection.update(collection_params)
-        format.html { redirect_to collection_path, notice: 'Collection was successfully updated.' }
+        format.html { redirect_to return_to, notice: 'Collection was successfully updated.' }
         format.json { render :show, status: :ok, location: @collection }
       else
         format.html { render :edit }
@@ -76,17 +80,26 @@ class CollectionsController < ApplicationController
   # Bookmark Actions
 
   def new_bookmark
-    @collection = Collection.find(params[:collection_id])
     @bookmark = Bookmark.new
   end
 
   def save_bookmark
-    @collection = Collection.find(params[:collection_id])
     bookmark = Bookmark.new(bookmark_params)
     @collection.bookmarks << bookmark
     @collection.save
 
-    redirect_to collection_path id: @collection.id
+    return_to = @collection.is_root? ? collections_path : collection_path
+
+    respond_to do |format|
+      if bookmark.save
+        format.html { redirect_to return_to, notice: 'Bookmark was successfully updated.' }
+        format.json { render :show, status: :ok, location: @collection }
+      else
+        format.html { render :edit }
+        format.json { render json: @collection.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   private
