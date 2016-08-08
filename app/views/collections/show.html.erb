@@ -52,7 +52,7 @@
             <%= item.tags %>
           </td>
           <td>
-            <a href="#">Open</a>
+            <%= link_to 'Open', uri_parse(item.url) %>
           </td>
         </tr>
         <% end %>
