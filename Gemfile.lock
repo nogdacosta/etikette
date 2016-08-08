@@ -284,6 +284,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable (~> 2.4)
   better_errors
   binding_of_caller
   bootstrap (~> 4.0.0.alpha3)
