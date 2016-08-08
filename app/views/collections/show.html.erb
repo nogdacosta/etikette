@@ -52,7 +52,7 @@
             <%= item.tags %>
           </td>
           <td>
-            <%= link_to 'Open', uri_parse(item.url) %>
+            <%= link_to 'Open', uri_parse(item.url), target: '_blank' %>
           </td>
         </tr>
         <% end %>

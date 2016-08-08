@@ -33,7 +33,7 @@
             <h4 class="card-title"><%= bookmark.title %></h4>
             <p class="card-text"><%= bookmark.url %></p>
             <p class="card-text"><%= bookmark.tags %></p>
-            <%= link_to 'Open', uri_parse(bookmark.url), class: 'btn btn-primary' %>
+            <%= link_to 'Open', uri_parse(bookmark.url), class: 'btn btn-primary', target: '_blank' %>
           </div>
         </div>
       </li>
