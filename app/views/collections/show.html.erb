@@ -1,63 +1,88 @@
-<h2><%= @collection.name %></h2>
-<p><%= @collection.description %></p>
-<%= @collection.tags %><br><%= @collection.categories %>
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-xs-center">
+        <h2><%= @collection.name %></h2>
+        <p><%= @collection.description %></p>
+        <p><%= @collection.tags %><br><%= @collection.categories %></p>
+        <br>
+        <p id="notice"><%= notice %></p>
+      </div>
+    </div>
 
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Back', collections_path %>
-
-<%#= link_to 'Add Bookmark', new_bookmark_path(@collection) %>
-<%= link_to 'Add Bookmark', new_bookmark_path(@collection) %>
-<%= link_to 'Add Collection', new_collection_path %>
-
-<!-- LIST ALL COLLECTIONS -->
-<h4>Collections</h4>
-
-<div class="bookmarks-wrapper">
-  <ul class="bookmarks-list list-inline row">
-    <% @collections.each do |collection| %>
-      <li class="col-sm-3">
-        <div class="card" data-url="<%= collection.id %>">
-          <div class="card-block">
-            <h4 class="card-title"><%= collection.name %></h4>
-            <p class="card-text"><%= collection.tags %></p>
-            <p class="card-text"><%= collection.categories %></p>
-            <%= link_to 'Show', collection, class: 'btn btn-primary' %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<!-- LIST ALL BOOKMARKS -->
-<div class="">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th colspan="4">Bookmarks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @items.each do |item| %>
-        <tr>
-          <td>
-            <%= item.title %>
-          </td>
-          <td>
-            <%= item.url %>
-          </td>
-          <td>
-            <%= item.tags %>
-          </td>
-          <td>
-            <%= link_to 'Open', uri_parse(item.url), target: '_blank' %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <div class="col-sm-12">
+      <div class="p-x-2 p-y-2 text-xs-center">
+        <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn btn-primary' %>
+        <%= link_to 'Back', collections_path, class: 'btn btn-primary' %>
+        <%= link_to 'Add Bookmark', new_bookmark_path(@collection), class: 'btn btn-primary' %>
+        <%= link_to 'Add Collection', new_collection_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
   </div>
 
+  <% if @collections.present? %>
+    <!-- LIST ALL COLLECTIONS -->
+    <div class="row">
+      <h4>Collections</h4>
+
+      <div class="bookmarks-wrapper">
+        <ul class="bookmarks-list list-inline row">
+          <% @collections.each do |collection| %>
+            <li class="col-sm-3">
+              <div class="card" data-url="<%= collection.id %>">
+                <div class="card-block">
+                  <h4 class="card-title"><%= collection.name %></h4>
+                  <p class="card-text"><%= collection.tags %></p>
+                  <p class="card-text"><%= collection.categories %></p>
+                  <%= link_to 'Show', collection, class: 'btn btn-primary' %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @bookmarks.present? %>
+    <!-- LIST ALL BOOKMARKS -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+            <table id="bookmark-list" class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-xs-center">#</th>
+                  <th colspan="4">Bookmarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @bookmarks.each_with_index do |bookmark, index| %>
+                <tr data-bookmark="<%= bookmark.id %>">
+                  <td scope="row" class="text-xs-center">
+                    <%= index + 1 %>
+                  </td>
+                  <td>
+                    <%= bookmark.title %>
+                  </td>
+                  <td>
+                    <%= bookmark.url %>
+                  </td>
+                  <td>
+                    <%= bookmark.tags %>
+                  </td>
+                  <td class="text-xs-center">
+                    <%= link_to 'Open', uri_parse(bookmark.url), class: 'btn btn-primary', target: '_blank' %>
+                    <%= link_to raw(fa_icon "trash-o"), remove_bookmark_path(bookmark_id: bookmark.id), class: 'btn btn-secondary', remote: true, method: :delete %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  <% end %>
+
 </div>
+

@@ -1,0 +1,13 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+
+  // Basic settings: turn linter(s) on
+  "ruby.lint": {
+      "reek": true,
+      "rubocop": true,
+      "ruby": true, //Runs ruby -wc
+      "fasterer": true,
+      "debride": true,
+      "ruby-lint": true
+  }
+}
