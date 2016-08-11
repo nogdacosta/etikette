@@ -17,7 +17,7 @@ class CollectionsController < ApplicationController
   # GET /collections/1.json
   def show
     @collections = @collection.collections
-    @items = @collection.bookmarks
+    @bookmarks = @collection.bookmarks
   end
 
   # GET /collections/:parent/new
@@ -99,7 +99,18 @@ class CollectionsController < ApplicationController
         format.json { render json: @collection.errors, status: :unprocessable_entity }
       end
     end
+  end
 
+  def remove_bookmark
+    @bookmark = Bookmark.find(params[:bookmark_id])
+    @bookmark.destroy
+
+    # return_to = @collection.is_root? ? collections_path : collection_path
+    # respond_to do |format|
+    #   format.html { redirect_to return_to, notice: 'Bookmark was successfully destroyed.' }
+    #   format.json { head :no_content }
+    #   format.js {render :layout => false}
+    # end
   end
 
   private

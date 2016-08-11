@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'collections/:collection_id',                 to: 'collections#show',           as: :collection
   get 'collections/:collection_id/new_bookmark',    to: 'collections#new_bookmark',   as: :new_bookmark
   post 'collections/:collection_id/save_bookmark',  to: 'collections#save_bookmark',  as: :save_bookmark
+  delete 'collections/:collection_id/remove_bookmark/:bookmark_id',  to: 'collections#remove_bookmark',  as: :remove_bookmark
 
   get 'collections/:collection_id/new',             to: 'collections#new',            as: :new_collection
   get 'collections/:collection_id/edit',            to: 'collections#edit',           as: :edit_collection
