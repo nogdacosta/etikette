@@ -45,6 +45,9 @@ gem 'mini_magick', '~> 4.5'
 
 gem 'addressable', '~> 2.4'
 
+# Simple way to use tags
+gem 'acts-as-taggable-on', '~> 4.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
