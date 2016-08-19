@@ -4,7 +4,7 @@
       <div class="text-xs-center">
         <h2><%= @collection.name %></h2>
         <p><%= @collection.description %></p>
-        <p><%= @collection.tags %><br><%= @collection.categories %></p>
+        <p><%= raw @collection.tag_list %><br><%= @collection.categories %></p>
         <br>
         <p id="notice"><%= notice %></p>
       </div>
@@ -13,7 +13,11 @@
     <div class="col-sm-12">
       <div class="p-x-2 p-y-2 text-xs-center">
         <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn btn-primary' %>
-        <%= link_to 'Back', collections_path, class: 'btn btn-primary' %>
+        <% if @collection.parent.is_root? %>
+          <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to 'Back', collection_path(@collection.parent), class: 'btn btn-primary' %>
+        <% end %>
         <%= link_to 'Add Bookmark', new_bookmark_path(@collection), class: 'btn btn-primary' %>
         <%= link_to 'Add Collection', new_collection_path, class: 'btn btn-primary' %>
       </div>
@@ -22,25 +26,22 @@
 
   <% if @collections.present? %>
     <!-- LIST ALL COLLECTIONS -->
-    <div class="row">
-      <h4>Collections</h4>
-
-      <div class="bookmarks-wrapper">
-        <ul class="bookmarks-list list-inline row">
-          <% @collections.each do |collection| %>
-            <li class="col-sm-3">
-              <div class="card" data-url="<%= collection.id %>">
-                <div class="card-block">
-                  <h4 class="card-title"><%= collection.name %></h4>
-                  <p class="card-text"><%= collection.tags %></p>
-                  <p class="card-text"><%= collection.categories %></p>
-                  <%= link_to 'Show', collection, class: 'btn btn-primary' %>
-                </div>
+    <h4>Collections</h4>
+    <div class="bookmarks-wrapper">
+      <ul class="bookmarks-list list-inline row">
+        <% @collections.each do |collection| %>
+          <li class="col-sm-3">
+            <div class="card" data-url="<%= collection.id %>">
+              <div class="card-block">
+                <h4 class="card-title"><%= collection.name %></h4>
+                <p class="card-text"><%= raw collection.tag_list %></p>
+                <p class="card-text"><%= collection.categories %></p>
+                <%= link_to 'Show', collection, class: 'btn btn-primary' %>
               </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 
@@ -69,7 +70,7 @@
                     <%= bookmark.url %>
                   </td>
                   <td>
-                    <%= bookmark.tags %>
+                    <%= raw bookmark.tag_list %>
                   </td>
                   <td class="text-xs-center">
                     <%= link_to 'Open', uri_parse(bookmark.url), class: 'btn btn-primary', target: '_blank' %>
@@ -85,4 +86,3 @@
   <% end %>
 
 </div>
-

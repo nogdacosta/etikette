@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   validate :avatar_size_validation, on: :update
 
-
+  acts_as_tagger
 
   private
 

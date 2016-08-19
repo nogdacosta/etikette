@@ -1,5 +1,6 @@
 <h1>Edit Collection <%= @collection.name %></h1>
-<%= form_for @collection, url: update_collection_path(collection_id: @collection.id, bookmark: @bookmark) do |f| %>
+
+<%= form_for @collection, url: update_collection_path(collection_id: @collection.id) do |f| %>
 
   <div class="field">
     <%= f.label :name %>
@@ -12,8 +13,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :tags %>
-    <%= f.text_field :tags %>
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list %>
   </div>
 
   <div class="field">
@@ -26,5 +27,8 @@
   </div>
 <% end %>
 
-
-<%= link_to 'Back', collection_path(@collection) %>
+<% if @collection.is_root? %>
+  <%= link_to 'Back', root_path %>
+<% else %>
+  <%= link_to 'Back', collection_path(@collection) %>
+<% end %>

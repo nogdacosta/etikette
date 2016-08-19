@@ -28,14 +28,14 @@ class CollectionsController < ApplicationController
   # POST /collections
   # POST /collections.json
   def save
-    collection = Collection.new(collection_params)
-    @collection.collections << collection
+    @item = Collection.new(collection_params)
+    @collection.collections << @item
     @collection.save
 
     return_to = @collection.is_root? ? collections_path : collection_path
 
     respond_to do |format|
-      if @collection.save
+      if @item.save
         format.html { redirect_to return_to, notice: 'Collection was successfully created.' }
         format.json { render :show, status: :created, location: @collection }
       else
@@ -54,7 +54,6 @@ class CollectionsController < ApplicationController
   # PATCH/PUT /collections/1.json
   def update
     return_to = @collection.is_root? ? collections_path : collection_path
-
     respond_to do |format|
       if @collection.update(collection_params)
         format.html { redirect_to return_to, notice: 'Collection was successfully updated.' }
@@ -83,15 +82,19 @@ class CollectionsController < ApplicationController
     @bookmark = Bookmark.new
   end
 
+  def edit_bookmark
+    @bookmark = Bookmark.find(params[:bookmark_id])
+  end
+
   def save_bookmark
     bookmark = Bookmark.new(bookmark_params)
     @collection.bookmarks << bookmark
     @collection.save
 
-    return_to = @collection.is_root? ? collections_path : collection_path
+    return_to = @collection.is_root? ? root_path : collection_path
 
     respond_to do |format|
-      if bookmark.save
+      if @collection.save
         format.html { redirect_to return_to, notice: 'Bookmark was successfully updated.' }
         format.json { render :show, status: :ok, location: @collection }
       else
@@ -104,13 +107,6 @@ class CollectionsController < ApplicationController
   def remove_bookmark
     @bookmark = Bookmark.find(params[:bookmark_id])
     @bookmark.destroy
-
-    # return_to = @collection.is_root? ? collections_path : collection_path
-    # respond_to do |format|
-    #   format.html { redirect_to return_to, notice: 'Bookmark was successfully destroyed.' }
-    #   format.json { head :no_content }
-    #   format.js {render :layout => false}
-    # end
   end
 
   private
@@ -126,11 +122,11 @@ class CollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params.require(:collection).permit(:name, :description, :tags, :categories)
+      params.require(:collection).permit(:name, :description, :categories, :tag_list)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
-      params.require(:bookmark).permit(:title, :url, :tags)
+      params.require(:bookmark).permit(:title, :url, :tag_list)
     end
 end
