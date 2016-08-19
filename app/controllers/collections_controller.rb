@@ -126,11 +126,11 @@ class CollectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
-      params.require(:collection).permit(:name, :description, :tags, :categories)
+      params.require(:collection).permit(:name, :description, :categories, :tag_list)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
-      params.require(:bookmark).permit(:title, :url, :tags)
+      params.require(:bookmark).permit(:title, :url, :tag_list)
     end
 end
