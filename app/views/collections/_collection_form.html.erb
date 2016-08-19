@@ -1,5 +1,3 @@
-<h1>New Collection</h1>
-
 <%= form_for @item, url: save_collection_path(parent_id: @collection.id, collection: @item) do |f| %>
 
   <div class="field">
@@ -25,10 +23,4 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
-
-<% if @collection.is_root? %>
-  <%= link_to 'Back', root_path %>
-<% else %>
-  <%= link_to 'Back', collection_path(@collection) %>
 <% end %>
