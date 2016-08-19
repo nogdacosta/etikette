@@ -22,9 +22,6 @@ class User < ApplicationRecord
   def generate_default_collection
     collection = Collection.new
     collection.name = "default"
-    collection.description = "default desc"
-    collection.tags = "default"
-    collection.categories = "default"
     collection.parent_type = User
     collection.parent_id = self.id
     collection.save
