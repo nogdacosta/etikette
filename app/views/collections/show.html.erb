@@ -20,6 +20,7 @@
         <% end %>
         <%= link_to 'Add Bookmark', new_bookmark_path(@collection), class: 'btn btn-primary' %>
         <%= link_to 'Add Collection', new_collection_path, class: 'btn btn-primary' %>
+        <%= link_to 'Share Collection', share_collection_path, class: 'btn btn-default', remote: true %>
       </div>
     </div>
   </div>
