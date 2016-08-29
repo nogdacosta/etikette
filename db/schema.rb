@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20160812130241) do
     t.index ["parent_type", "parent_id"], name: "index_collections_on_parent_type_and_parent_id", using: :btree
   end
 
+  create_table "sharings", force: :cascade do |t|
+    t.string   "shareable_type"
+    t.integer  "shareable_id"
+    t.string   "receiver_type"
+    t.integer  "receiver_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["receiver_type", "receiver_id"], name: "index_sharings_on_receiver_type_and_receiver_id", using: :btree
+    t.index ["shareable_type", "shareable_id", "receiver_type", "receiver_id"], name: "sharing_idx", unique: true, using: :btree
+    t.index ["shareable_type", "shareable_id"], name: "index_sharings_on_shareable_type_and_shareable_id", using: :btree
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"

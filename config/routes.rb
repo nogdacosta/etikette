@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users,  path: '',
-                      path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register', password: 'secret', confirmation: 'verification', unlock: 'unblock' },
+                      path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register',    password: 'secret', confirmation: 'verification', unlock: 'unblock' },
                       controllers: { registrations: 'registrations' }
 
   # resources :bookmarks
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
   # Inside Each collection we have a list of collections/bookmarks
-  get 'collections',                                to: 'collections#index',          as: :collections
+  # get 'collections',                                to: 'collections#index',          as: :collections
   get 'collections/:collection_id',                 to: 'collections#show',           as: :collection
   get 'collections/:collection_id/new_bookmark',    to: 'collections#new_bookmark',   as: :new_bookmark
   post 'collections/:collection_id/save_bookmark',  to: 'collections#save_bookmark',  as: :save_bookmark
@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get 'collections/:collection_id/edit',            to: 'collections#edit',           as: :edit_collection
   post 'collections/:collection_id/save',           to: 'collections#save',           as: :save_collection
   patch 'collections/:collection_id/update',        to: 'collections#update',         as: :update_collection
+
+  get 'collections/:collection_id/share',             to: 'collections#share',            as: :share_collection
+  post 'collections/:collection_id/save_share',       to: 'collections#save_share',            as: :save_share_collection
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
