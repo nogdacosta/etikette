@@ -1,13 +1,17 @@
 class User < ApplicationRecord
   after_create :generate_default_collection
 
-  has_one :collection, as: :parent
-  mount_uploader :avatar, AvatarUploader
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_one :collection, as: :parent
+
+  has_many :sharings, as: :receiver
+  has_many :shared_collections, through: :sharings, source: :shareable, :source_type => 'Collection'
+
+  mount_uploader :avatar, AvatarUploader
 
   validates_presence_of   :avatar, on: :update
   validates_integrity_of  :avatar, on: :update
