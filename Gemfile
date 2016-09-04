@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.0'
 
 # Use Devise for Authentication
 gem 'devise', '~> 4.1'
+gem 'devise_invitable', '~> 1.7'
 
 # simple and extremely flexible way to upload files
 gem 'carrierwave', '~> 0.11'
