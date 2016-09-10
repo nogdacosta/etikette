@@ -117,7 +117,14 @@ class CollectionsController < ApplicationController
   def save_share
     sharing = Sharing.new()
     sharing.shareable = @collection
-    sharing.receiver = User.find_for_authentication(email: params[:receiver])
+
+    sharing_user = User.find_for_authentication(email: params[:receiver])
+    if sharing_user.nil?
+      User.invite!({email: params[:receiver]}, current_user) # current_user will be set as invited_by
+      sharing_user = User.find_for_authentication(email: params[:receiver])
+    end
+
+    sharing.receiver = sharing_user
     if Sharing.exists?(shareable: @collection, receiver: sharing.receiver)
       @error = "Collection has already been shared with this user."
     else
