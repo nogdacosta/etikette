@@ -6,16 +6,16 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :collection, as: :parent
+  has_one :collection, as: :parent, dependent: :destroy
 
-  has_many :sharings, as: :receiver
-  has_many :shared_collections, through: :sharings, source: :shareable, :source_type => 'Collection'
+  has_many :sharings, as: :receiver, dependent: :destroy
+  has_many :shared_collections, through: :sharings, source: :shareable, source_type: 'Collection', dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
-  validates_presence_of   :avatar, on: :update
-  validates_integrity_of  :avatar, on: :update
-  validates_processing_of :avatar, on: :update
+  # validates_presence_of   :avatar, on: :update
+  # validates_integrity_of  :avatar, on: :update
+  # validates_processing_of :avatar, on: :update
 
   validate :avatar_size_validation, on: :update
 

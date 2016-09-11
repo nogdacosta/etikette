@@ -60,7 +60,7 @@
               <span class="user-image">
                 <%= image_tag current_user.avatar.thumb.url, class: "img-responsive img-circle" %>
               </span>
-              <span class="user-name"><%= current_user.user_name || current_user.email %></span>
+              <span class="user-name"><%= current_user.name || current_user.email %></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-list" aria-labelledby="Preview">
               <%= link_to 'Account', edit_user_registration_path, class: 'dropdown-item' %>
