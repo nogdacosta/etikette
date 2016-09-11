@@ -18,6 +18,7 @@ class CollectionsController < ApplicationController
   def show
     @collections = @collection.collections
     @bookmarks = @collection.bookmarks
+    @sharings = @collection.sharings
   end
 
   # GET /collections/:parent/new

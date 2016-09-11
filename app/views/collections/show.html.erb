@@ -12,6 +12,13 @@
 
     <div class="col-sm-12">
       <div class="p-x-2 p-y-2 text-xs-center">
+        <% @sharings.each do |share| %>
+          <span class="user-image">
+            <%= image_tag share.receiver.avatar.thumb.url, size: '50x50', alt: share.receiver.name || share.receiver.email, title: share.receiver.name || share.receiver.email, class: "img-responsive img-circle" %>
+          </span>
+        <% end %>
+      </div>
+      <div class="p-x-2 p-y-2 text-xs-center">
         <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn btn-primary' %>
         <% if @collection.parent.is_root? %>
           <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
@@ -20,7 +27,7 @@
         <% end %>
         <%= link_to 'Add Bookmark', new_bookmark_path(@collection), class: 'btn btn-primary' %>
         <%= link_to 'Add Collection', new_collection_path, class: 'btn btn-primary' %>
-        <%= link_to 'Share Collection', share_collection_path, class: 'btn btn-default', remote: true %>
+        <%= link_to 'Share Collection', share_collection_path, class: 'btn btn-default', remote: true if @collection.parent.is_root? %>
       </div>
     </div>
   </div>
