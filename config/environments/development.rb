@@ -56,9 +56,9 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     enable_starttls_auto: true,
     port: 587,
-    domain: Rails.application.secrets.email_provider_domain,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_api_key
+    domain:  ENV["email_provider_domain"],
+    user_name: ENV["email_provider_username"],
+    password: ENV["email_provider_api_key"]
   }
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
