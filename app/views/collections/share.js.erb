@@ -1,0 +1,6 @@
+$('body').append("<%= j render(partial: "collections/partials/share_collection")  %>");
+$('.modal').modal();
+
+$('.modal').on('hidden.bs.modal', function(){
+  $(this).remove();
+})

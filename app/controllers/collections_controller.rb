@@ -18,6 +18,7 @@ class CollectionsController < ApplicationController
   def show
     @collections = @collection.collections
     @bookmarks = @collection.bookmarks
+    @sharings = @collection.sharings
   end
 
   # GET /collections/:parent/new
@@ -109,6 +110,30 @@ class CollectionsController < ApplicationController
     @bookmark.destroy
   end
 
+  ### SHARE ACTIONS ###
+  def share
+
+  end
+
+  def save_share
+    sharing = Sharing.new()
+    sharing.shareable = @collection
+
+    sharing_user = User.find_for_authentication(email: params[:receiver])
+    if sharing_user.nil?
+      User.invite!({email: params[:receiver]}, current_user) # current_user will be set as invited_by
+      sharing_user = User.find_for_authentication(email: params[:receiver])
+    end
+
+    sharing.receiver = sharing_user
+    if Sharing.exists?(shareable: @collection, receiver: sharing.receiver)
+      @error = "Collection has already been shared with this user."
+    else
+      sharing.save
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
@@ -128,5 +153,9 @@ class CollectionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
       params.require(:bookmark).permit(:title, :url, :tag_list)
+    end
+
+    def sharing_params
+      params.require(:sharing).permit(:shareable, :receiver)
     end
 end

@@ -1,0 +1,5 @@
+<% if @error.present? %>
+$(".modal-body").append("<%= raw "<p>#{@error}</p>" %>")
+<% else %>
+$('.modal').modal('hide');
+<% end %>

@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.0'
 
 # Use Devise for Authentication
 gem 'devise', '~> 4.1'
+gem 'devise_invitable', '~> 1.7'
 
 # simple and extremely flexible way to upload files
 gem 'carrierwave', '~> 0.11'
@@ -51,6 +52,8 @@ gem 'acts-as-taggable-on', '~> 4.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem "figaro"
+  
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
