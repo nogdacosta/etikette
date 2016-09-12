@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap-sprockets
+//= require selectize
 //= require_tree .

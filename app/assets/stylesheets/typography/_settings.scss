@@ -9,11 +9,11 @@ $em-base: 16px;
 $font-weight-base: 400;
 
 // Headings size
-$font-size-h1: rem(32);
-$font-size-h2: rem(22);
-$font-size-h3: rem(20);
+$font-size-h1: rem(39);
+$font-size-h2: rem(31);
+$font-size-h3: rem(25);
 $font-size-h4: rem(20);
-$font-size-h5: rem(14);
+$font-size-h5: rem(12.8);
 $font-size-h6: rem(12); // ?????
 
 // Paragraph and others
@@ -26,6 +26,6 @@ $line-height-base: 1.35rem;
 // Headings Definitions
 $headings-font-family:    inherit !default;
 $headings-font-weight:    900;
-$headings-line-height:    1.1em;
+$headings-line-height:    1.2em;
 $headings-color:          $grey-900 !default;
 $headings-small-color:    $grey-700 !default;

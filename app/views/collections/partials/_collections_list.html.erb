@@ -1,0 +1,19 @@
+<h1>Collections</h1>
+
+<div class="bookmarks-wrapper">
+  <ul class="bookmarks-list list-inline row">
+    <% @collections.each do |collection| %>
+      <li class="col-sm-3">
+        <div class="card" data-url="<%= collection.id %>">
+          <div class="card-block">
+            <h4 class="card-title"><%= collection.name %></h4>
+            <p class="card-text"><%= raw collection.tag_list %></p>
+            <p class="card-text"><%= collection.categories %></p>
+            <%= link_to 'Show', collection, class: 'btn btn-primary' %>
+            <%= link_to raw(fa_icon "trash-o"), delete_collection_path(collection_id: collection.id), class: 'btn btn-primary', remote: true, method: :delete %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

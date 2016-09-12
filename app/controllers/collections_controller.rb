@@ -8,9 +8,9 @@ class CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
-    @default = current_user.collection
-    @collections = @default.collections
-    @bookmarks = @default.bookmarks
+    @collection = current_user.collection
+    @collections = @collection.collections
+    @bookmarks = @collection.bookmarks
   end
 
   # GET /collections/1
@@ -33,17 +33,19 @@ class CollectionsController < ApplicationController
     @collection.collections << @item
     @collection.save
 
-    return_to = @collection.is_root? ? collections_path : collection_path
+    @collections = @collection.collections
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to return_to, notice: 'Collection was successfully created.' }
-        format.json { render :show, status: :created, location: @collection }
-      else
-        format.html { render :new }
-        format.json { render json: @collection.errors, status: :unprocessable_entity }
-      end
-    end
+    # return_to = @collection.is_root? ? collections_path : collection_path
+    #
+    # respond_to do |format|
+    #   if @item.save
+    #     format.html { redirect_to return_to, notice: 'Collection was successfully created.' }
+    #     format.json { render :show, status: :created, location: @collection }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @collection.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # GET /collections/:parent/1/edit
@@ -68,13 +70,9 @@ class CollectionsController < ApplicationController
 
   # DELETE /collections/1
   # DELETE /collections/1.json
-  # def destroy
-  #   @collection.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to collections_url, notice: 'Collection was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @collection.destroy
+  end
 
 
   # Bookmark Actions
@@ -92,17 +90,19 @@ class CollectionsController < ApplicationController
     @collection.bookmarks << bookmark
     @collection.save
 
-    return_to = @collection.is_root? ? root_path : collection_path
+    @bookmarks = @collection.bookmarks
 
-    respond_to do |format|
-      if @collection.save
-        format.html { redirect_to return_to, notice: 'Bookmark was successfully updated.' }
-        format.json { render :show, status: :ok, location: @collection }
-      else
-        format.html { render :edit }
-        format.json { render json: @collection.errors, status: :unprocessable_entity }
-      end
-    end
+    # return_to = @collection.is_root? ? root_path : collection_path
+
+    # respond_to do |format|
+    #   if @collection.save
+    #     format.html { redirect_to return_to, notice: 'Bookmark was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @collection }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @collection.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def remove_bookmark
@@ -131,6 +131,7 @@ class CollectionsController < ApplicationController
     else
       sharing.save
     end
+    @sharings = @collection.sharings
 
   end
 

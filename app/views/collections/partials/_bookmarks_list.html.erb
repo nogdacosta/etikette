@@ -1,0 +1,37 @@
+<!-- LIST ALL BOOKMARKS -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+        <table id="bookmark-list" class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-xs-center">#</th>
+              <th colspan="4">Bookmarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bookmarks.each_with_index do |bookmark, index| %>
+            <tr data-bookmark="<%= bookmark.id %>">
+              <td scope="row" class="text-xs-center">
+                <%= index + 1 %>
+              </td>
+              <td>
+                <%= bookmark.title %>
+              </td>
+              <td>
+                <%= bookmark.url %>
+              </td>
+              <td>
+                <%= raw bookmark.tag_list %>
+              </td>
+              <td class="text-xs-center">
+                <%= link_to 'Open', uri_parse(bookmark.url), class: 'btn btn-primary', target: '_blank' %>
+                <%= link_to raw(fa_icon "trash-o"), remove_bookmark_path(collection_id: @collection.id,bookmark_id: bookmark.id), class: 'btn btn-secondary', remote: true, method: :delete %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

@@ -9,6 +9,14 @@ header.etikette-header{
   right: 0;
   z-index: 1030;
 
+  .brand{
+    a{
+      color: $grey-900;
+      font-size: rem(20);
+      font-weight: 900;
+    }
+  }
+
   nav{
     display: flex;
     justify-content: space-between;
@@ -27,8 +35,13 @@ header.etikette-header{
 .container-wrapper{
   position: relative;
   min-height: 100vh;
-  padding-top: 71px;
+  padding-top: 70px;
   .layout-content{
     padding: 50px 80px;
   }
+}
+
+.collection-header{
+  margin: -50px -80px 30px;
+  padding: 25px;
 }
