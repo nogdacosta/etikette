@@ -1,0 +1,18 @@
+$('body').append("<%= j render(partial: 'collections/partials/collection_update')  %>");
+$('.modal').modal();
+
+$('.modal').on('hidden.bs.modal', function(){
+  $(this).remove();
+})
+
+$('#collection_tag_list').selectize({
+    plugins: ['restore_on_backspace', 'remove_button'],
+    delimiter: ',',
+    persist: false,
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+});

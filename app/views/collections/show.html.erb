@@ -1,96 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="text-xs-center">
-        <h2><%= @collection.name %></h2>
-        <p><%= @collection.description %></p>
-        <p><%= raw @collection.tag_list %><br><%= @collection.categories %></p>
-        <br>
-        <p id="notice"><%= notice %></p>
-      </div>
+<% content_for :page_class, 'bg-grey' %>
+<div class="collection-header bg-white text-dark">
+  <div class="collection-info">
+    <div class="p-x-2 p-y-2 text-xs-center" id="collection-info">
+      <%= render 'collections/partials/collection_information' %>
     </div>
-
-    <div class="col-sm-12">
-      <div class="p-x-2 p-y-2 text-xs-center">
-        <% @sharings.each do |share| %>
-          <span class="user-image">
-            <%= image_tag share.receiver.avatar.thumb.url, size: '50x50', alt: share.receiver.name || share.receiver.email, title: share.receiver.name || share.receiver.email, class: "img-responsive img-circle" %>
-          </span>
-        <% end %>
-      </div>
-      <div class="p-x-2 p-y-2 text-xs-center">
-        <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn btn-primary' %>
-        <% if @collection.parent.is_root? %>
-          <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
-        <% else %>
-          <%= link_to 'Back', collection_path(@collection.parent), class: 'btn btn-primary' %>
-        <% end %>
-        <%= link_to 'Add Bookmark', new_bookmark_path(@collection), class: 'btn btn-primary' %>
-        <%= link_to 'Add Collection', new_collection_path, class: 'btn btn-primary' %>
-        <%= link_to 'Share Collection', share_collection_path, class: 'btn btn-default', remote: true if @collection.parent.is_root? %>
-      </div>
+    <div id="collections-shares">
+      <%= render 'collections/partials/collection_shares' if @sharings.present? %>
+    </div>
+    <div class="p-x-2 p-y-2 text-xs-center">
+      <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn btn-primary', remote: true %>
+      <% if @collection.parent.is_root? %>
+        <%= link_to 'Back', root_path, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'Back', collection_path(@collection.parent), class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to 'Add Bookmark', new_bookmark_path(@collection), class: 'btn btn-primary', remote: true %>
+      <%= link_to 'Add Collection', new_collection_path, class: 'btn btn-primary', remote: true %>
+      <%= link_to 'Share Collection', share_collection_path, class: 'btn btn-secondary', remote: true if @collection.parent.is_root? %>
     </div>
   </div>
+</div>
 
-  <% if @collections.present? %>
-    <!-- LIST ALL COLLECTIONS -->
-    <h4>Collections</h4>
-    <div class="bookmarks-wrapper">
-      <ul class="bookmarks-list list-inline row">
-        <% @collections.each do |collection| %>
-          <li class="col-sm-3">
-            <div class="card" data-url="<%= collection.id %>">
-              <div class="card-block">
-                <h4 class="card-title"><%= collection.name %></h4>
-                <p class="card-text"><%= raw collection.tag_list %></p>
-                <p class="card-text"><%= collection.categories %></p>
-                <%= link_to 'Show', collection, class: 'btn btn-primary' %>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="container">
+  <div class="p-x-2 p-y-2" id="collections-list">
+    <%= render 'collections/partials/collections_list' if @collections.present? %>
+  </div>
 
-  <% if @bookmarks.present? %>
-    <!-- LIST ALL BOOKMARKS -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="table-responsive">
-            <table id="bookmark-list" class="table table-striped">
-              <thead>
-                <tr>
-                  <th class="text-xs-center">#</th>
-                  <th colspan="4">Bookmarks</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @bookmarks.each_with_index do |bookmark, index| %>
-                <tr data-bookmark="<%= bookmark.id %>">
-                  <td scope="row" class="text-xs-center">
-                    <%= index + 1 %>
-                  </td>
-                  <td>
-                    <%= bookmark.title %>
-                  </td>
-                  <td>
-                    <%= bookmark.url %>
-                  </td>
-                  <td>
-                    <%= raw bookmark.tag_list %>
-                  </td>
-                  <td class="text-xs-center">
-                    <%= link_to 'Open', uri_parse(bookmark.url), class: 'btn btn-primary', target: '_blank' %>
-                    <%= link_to raw(fa_icon "trash-o"), remove_bookmark_path(bookmark_id: bookmark.id), class: 'btn btn-secondary', remote: true, method: :delete %>
-                  </td>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-      </div>
-    </div>
-  <% end %>
-
+  <div class="p-x-2 p-y-2" id="bookmarks-list">
+    <%= render 'collections/partials/bookmarks_list' if @bookmarks.present? %>
+  </div>
 </div>

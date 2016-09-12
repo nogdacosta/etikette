@@ -2,4 +2,5 @@
 $(".modal-body").append("<%= raw "<p>#{@error}</p>" %>")
 <% else %>
 $('.modal').modal('hide');
+$('#collections-shares').html("<%= j render(partial: 'collections/partials/collection_shares')  %>")
 <% end %>

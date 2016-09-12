@@ -1,3 +1,4 @@
+@import "bourbon";
 @import "settings";
 
 // Custom bootstrap variables must be set or import before bootstrap itself.
@@ -5,12 +6,17 @@ $enable-flex: true;
 @import "bootstrap";
 @import "font-awesome";
 
+@import "selectize";
+@import "selectize.bootstrap3";
+@import "selectize.default";
+
 @import "typography/typography";
-//@import "typography/styles";
+@import "typography/styles";
 
 @import "base/reset";
 
 @import "layout/layout";
 @import "layout/colors";
+@import "layout/general";
 
-@import "views/devise"
+@import "views/devise";

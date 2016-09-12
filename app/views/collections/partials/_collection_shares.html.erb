@@ -1,0 +1,10 @@
+<% if @sharings.present? %>
+	<div class="p-x-2 p-y-2 text-xs-center">
+		<h4>Shared with</h4>
+		<% @sharings.each do |share| %>
+			<span class="user-image">
+				<%= image_tag share.receiver.avatar.thumb.url, size: '50x50', alt: share.receiver.name || share.receiver.email, title: share.receiver.name || share.receiver.email, class: "img-responsive img-circle #{"opacity-50" if !share.receiver.invitation_accepted?}" %>
+			</span>
+		<% end %>
+	</div>
+<% end %>

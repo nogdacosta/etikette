@@ -1,9 +1,0 @@
-<h1>New Bookmark</h1>
-
-<%= render 'bookmark_form' %>
-
-<% if @collection.is_root? %>
-  <%= link_to 'Back', root_path %>
-<% else %>
-  <%= link_to 'Back', collection_path(@collection) %>
-<% end %>

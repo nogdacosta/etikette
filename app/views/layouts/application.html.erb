@@ -21,11 +21,14 @@
       <nav>
 
         <!-- Search -->
-        <form class="form-inline hidden-sm-down">
+        <!-- <form class="form-inline hidden-sm-down">
           <div class="input-group">
             <input type="search" class="form-control" placeholder="Search for...">
           </div>
-        </form>
+        </form> -->
+        <div class="brand">
+          <%= link_to 'Etikette', root_path, class: 'text-uppercase' %>
+        </div>
 
         <ul class="nav navbar-nav hidden-md-down">
           <!-- Notifications dropdown -->
@@ -56,11 +59,11 @@
 
           <!-- User dropdown -->
           <li class="nav-item dropdown user-info">
-            <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
+            <a class="nav-link active p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
+              <span class="user-name"><%= current_user.name || current_user.email %></span>
               <span class="user-image">
                 <%= image_tag current_user.avatar.thumb.url, class: "img-responsive img-circle" %>
               </span>
-              <span class="user-name"><%= current_user.name || current_user.email %></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-list" aria-labelledby="Preview">
               <%= link_to 'Account', edit_user_registration_path, class: 'dropdown-item' %>

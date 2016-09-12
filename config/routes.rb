@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'collections/:collection_id/edit',            to: 'collections#edit',           as: :edit_collection
   post 'collections/:collection_id/save',           to: 'collections#save',           as: :save_collection
   patch 'collections/:collection_id/update',        to: 'collections#update',         as: :update_collection
+  delete 'collections/:collection_id/destroy',      to: 'collections#destroy',        as: :delete_collection
 
   get 'collections/:collection_id/share',             to: 'collections#share',            as: :share_collection
   post 'collections/:collection_id/save_share',       to: 'collections#save_share',            as: :save_share_collection

@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     line-height: 1;
     color: $headings-small-color;
-    font-size: 70%;
+    font-size: 0.8em;
   }
 }
 
@@ -33,7 +33,10 @@ h6 {font-size: $font-size-h6;}
 }
 h1,h4{font-weight: 600;}
 
-p{font-size: $font-size-p;}
+p{
+  font-size: $font-size-p;
+  margin-bottom: 1.3em;
+}
 li{
   font-size: $font-size-li;
 }

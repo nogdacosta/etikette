@@ -17,7 +17,7 @@
 
           <% if current_user.avatar.url.present? %>
             <div class="">
-              <%= image_tag current_user.avatar.thumb.url, class: 'img-resposive img-circle' %>
+              <%= image_tag current_user.avatar.medium.url, size:'150x150', class: 'img-resposive img-circle' %>
             </div>
             <%= f.label :remove_avatar %>
             <%= f.check_box :remove_avatar %>

@@ -18,6 +18,8 @@ gem 'coffee-rails', '~> 4.1', '>= 4.1.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# add bourbon for sass mixins
+gem 'bourbon'
 # bootstrap for rails
 gem 'bootstrap', '~> 4.0.0.alpha3'
 # bootstrap uses tether for absolute positioning
@@ -27,6 +29,9 @@ end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# selectize for dropdown box
+gem "selectize-rails"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -53,7 +58,7 @@ gem 'acts-as-taggable-on', '~> 4.0'
 # gem 'capistrano-rails', group: :development
 
 gem "figaro"
-  
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

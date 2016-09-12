@@ -36,6 +36,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: etikette_staging
+  username: etikette
+  password: <%= ENV['ETIKETTE_DATABASE_PASSWORD'] %>
 production:
   <<: *default
   database: etikette_production
