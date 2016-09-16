@@ -57,7 +57,7 @@ Rails.application.configure do
     port: ENV["email_provider_port"],
     domain:  ENV["email_provider_domain"],
     user_name: ENV["email_provider_username"],
-    password: ENV["email_provider_api_key"]
+    password: ENV["email_provider_password"]
   }
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,

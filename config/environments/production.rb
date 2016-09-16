@@ -41,7 +41,7 @@ Rails.application.configure do
     port: ENV["email_provider_port"],
     domain:  ENV["email_provider_domain"],
     user_name: ENV["email_provider_username"],
-    password: ENV["email_provider_api_key"]
+    password: ENV["email_provider_password"]
   }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
