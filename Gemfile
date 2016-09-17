@@ -59,15 +59,6 @@ gem 'acts-as-taggable-on', '~> 4.0'
 
 gem "figaro"
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Rubocop
-  gem 'rubocop', require: false
-end
-
-
 group :development do
   # Pry instead of IRB
   gem 'pry'
@@ -93,6 +84,14 @@ group :development do
   gem 'capybara'
   gem 'spring-commands-rspec'
   gem 'vcr'
+end
+
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+
+  # Rubocop
+  gem 'rubocop', require: false
 end
 
 group :test do
