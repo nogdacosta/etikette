@@ -45,6 +45,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise', '~> 4.1'
 gem 'devise_invitable', '~> 1.7'
 
+# Pundit for Authorization
+gem "pundit"
+
 # simple and extremely flexible way to upload files
 gem 'carrierwave', '~> 0.11'
 gem 'mini_magick', '~> 4.5'
@@ -64,6 +67,7 @@ group :development do
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem "rb-readline"
   # better errors
   gem "better_errors"
   gem "binding_of_caller"

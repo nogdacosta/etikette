@@ -1,0 +1,14 @@
+<div class="collection-users">
+  Shared with:
+  <br>
+  <span class="user-image">
+    <% user_info = current_user.name || current_user.email %>
+    <%= image_tag collection.parent.parent.avatar.thumb.url, size: '25x25', alt: user_info, title: user_info, class: "img-responsive img-circle" %>
+  </span>
+  <% collection.sharings.each do |share| %>
+    <span class="user-image">
+      <% user_info = share.receiver.name || share.receiver.email %>
+      <%= image_tag share.receiver.avatar.thumb.url, size: '25x25', alt: user_info, title: user_info, class: "img-responsive img-circle #{"opacity-50" if !share.receiver.is_active?}" %>
+    </span>
+  <% end %>
+</div>

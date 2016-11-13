@@ -5,7 +5,7 @@
       <%= render 'collections/partials/collection_information' %>
     </div>
     <div id="collections-shares">
-      <%= render 'collections/partials/collection_shares' if @sharings.present? %>
+      <%= render 'collections/partials/collection_shares' %>
     </div>
     <div class="p-x-2 p-y-2 text-xs-center">
       <%= link_to 'Edit', edit_collection_path(@collection), class: 'btn btn-primary', remote: true %>
