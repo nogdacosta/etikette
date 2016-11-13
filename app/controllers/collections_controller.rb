@@ -11,6 +11,7 @@ class CollectionsController < ApplicationController
     @collection = current_user.collection
     @collections = @collection.collections
     @bookmarks = @collection.bookmarks
+    @shared_collections = current_user.sharings
   end
 
   # GET /collections/1

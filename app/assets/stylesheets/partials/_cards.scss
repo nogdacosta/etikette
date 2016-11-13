@@ -1,0 +1,19 @@
+.card-block{
+	.collection-users{
+		padding: 5px 0 15px;
+		.user-image{
+			position: relative;
+	    display: inline-block;
+	    margin-right: -15px;
+			transition: all 0.3s cubic-bezier(0.05, 0.45, 0.05, 1);
+			&:hover{
+				z-index: 10;
+			}
+		}
+		&:hover{
+			.user-image{
+				margin-right: 0;
+			}
+		}
+	}
+}

@@ -1,9 +1,13 @@
 <% if @sharings.present? %>
 	<div class="p-x-2 p-y-2 text-xs-center">
 		<h4>Shared with</h4>
+		<span class="user-image">
+			<% user_info = current_user.name || current_user.email %>
+			<%= image_tag @collection.parent.parent.avatar.thumb.url, size: '50x50', alt: user_info, title: user_info, class: "img-responsive img-circle" %>
 		<% @sharings.each do |share| %>
 			<span class="user-image">
-				<%= image_tag share.receiver.avatar.thumb.url, size: '50x50', alt: share.receiver.name || share.receiver.email, title: share.receiver.name || share.receiver.email, class: "img-responsive img-circle #{"opacity-50" if !share.receiver.invitation_accepted?}" %>
+				<% user_info = share.receiver.name || share.receiver.email %>
+				<%= image_tag share.receiver.avatar.thumb.url, size: '50x50', alt: user_info, title: user_info, class: "img-responsive img-circle #{"opacity-50" if !share.receiver.is_active?}" %>
 			</span>
 		<% end %>
 	</div>

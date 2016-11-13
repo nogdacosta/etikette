@@ -10,6 +10,10 @@
   <%= render 'collections/partials/collections_list' if @collections.present? %>
 </div>
 
+<div class="p-x-2 p-y-2" id="collections-list">
+  <%= render 'collections/partials/shared_collections_list' if @shared_collections.present? %>
+</div>
+
 <div class="p-x-2 p-y-2" id="bookmarks-list">
   <%= render 'collections/partials/bookmarks_list' if @bookmarks.present? %>
 </div>

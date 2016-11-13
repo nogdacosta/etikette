@@ -15,6 +15,9 @@ $enable-flex: true;
 
 @import "base/reset";
 
+@import "partials/images";
+@import "partials/cards";
+
 @import "layout/layout";
 @import "layout/colors";
 @import "layout/general";

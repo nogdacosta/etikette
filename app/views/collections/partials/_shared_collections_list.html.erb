@@ -1,8 +1,9 @@
-<h1><%= @collection.is_root? ? 'My Collections' : 'Collections' %></h1>
+<h1>Shared Collections</h1>
 
 <div class="bookmarks-wrapper">
   <ul class="bookmarks-list list-inline row">
-    <% @collections.each do |collection| %>
+    <% @shared_collections.each do |shared| %>
+			<% collection = shared.shareable %>
       <li class="col-sm-3">
         <div class="card" data-url="<%= collection.id %>">
           <div class="card-block">

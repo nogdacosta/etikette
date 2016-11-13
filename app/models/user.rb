@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
   acts_as_tagger
 
+  def is_active?
+    self.invitation_accepted? or self.confirmed?
+  end
+
   private
 
   def generate_default_collection
